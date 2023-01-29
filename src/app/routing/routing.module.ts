@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'experience', component: HistoryComponent },
   { path: 'education', component: EducationComponent },
-  { path: 'certifications', component: CertificateComponent},
+  { path: 'achievements', component: CertificateComponent},
   { path: 'skills', component: SkillsComponent},
   { path: 'projects/:name', component: ProjectComponent }
 
