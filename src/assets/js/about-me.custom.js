@@ -1,5 +1,5 @@
 const circleValues = [1, 0.97, 0.3];
-const values = [0.9, 0.7, 0.8, 0.75];
+const values = [0.9, 0.8, 0.85, 0.75];
 
 $(function () {
 

@@ -74,7 +74,7 @@ export class HistoryComponent implements OnInit {
 
   );
   ex2: WorkExperience = new WorkExperience(
-    "Software Engineer Intern",
+    "CO-LEADER & Software Engineer ",
     "TUNISIAN SPACE ASSOCIATION ",
     "Computer Science",
     true,
@@ -115,7 +115,7 @@ export class HistoryComponent implements OnInit {
 
 
 
-  educations: Education[] = [this.ed1, this.ed2];
+  educations: Education[] = [this.ed2, this.ed1];
   workExperiences: WorkExperience[] = [ this.ex1, this.ex2, this.ex3];
 
   constructor(private educationService: EducationsService, private workExperienceService: WorkExperiencesService) { }
