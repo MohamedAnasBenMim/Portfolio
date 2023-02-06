@@ -32,3 +32,11 @@
 <script src="./assets/js/main.js"></script>
 </body>
 </html>
+<script>
+  arr=["Welcome to my portfolio","I'm Samer BEN MIM", "I love solving Rubik's cube","I love Coding"]
+  let i =0
+  setInterval(function(){
+    document.querySelector("title").innerHTML=arr[i];
+    i=(i+1)%arr.length;
+  }, 10000);
+</script>
