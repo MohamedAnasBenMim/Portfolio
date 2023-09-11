@@ -35,9 +35,9 @@ export class HistoryComponent implements OnInit {
     "BH BANK & ASSURACE TUNIS",
     "Software Engineer Intern",
     "Computer Science",
-    true,
+    false,
     new Date("2022-11-01"),
-    new Date("2022-07-01"),
+    new Date("2023-06-01"),
     "France",
     [`As a part-time employee at BH Assurance, I worked on the Ahmini Project, a large initiative with both philanthropic and business aims. The project aimed to secure & support rural women who were working in difficult conditions by providing them with resources and assistance in case of emergency.`,
 
@@ -46,6 +46,26 @@ export class HistoryComponent implements OnInit {
     ` The project was challenging but also rewarding as it was fulfilling to be able to contribute to a project that had such a positive impact on the lives of rural women.
       `,
     "  Technologies : React typescript, Redux, nestJs , TypeOrm , etc."
+    ],
+    [
+      "a",
+      "b"
+    ]
+
+  );
+  ed3: Education = new Education(
+    "Tickie Paris",
+    "Software Engineer Intern",
+    "Station F paris",
+    true,
+    new Date("2023-06-01"),
+    new Date("2022-07-01"),
+
+    "France",
+    [`Designed Tickie's software subscription module architecture, developing the subscription solution's business logic using
+    Next and Nest.js technologies. Executed a comprehensive suite of robust unit and end-to-end tests.
+    `,
+    "  Technologies : NextJs, Redux,  NestJs , Primsa , etc."
     ],
     [
       "a",
@@ -73,6 +93,7 @@ export class HistoryComponent implements OnInit {
     ]
 
   );
+
   ex2: WorkExperience = new WorkExperience(
     "CO-LEADER & Software Engineer ",
     "TUNISIAN SPACE ASSOCIATION ",
@@ -115,7 +136,7 @@ export class HistoryComponent implements OnInit {
 
 
 
-  educations: Education[] = [this.ed2, this.ed1];
+  educations: Education[] = [this.ed3,this.ed2, this.ed1 ];
   workExperiences: WorkExperience[] = [ this.ex1, this.ex2, this.ex3];
 
   constructor(private educationService: EducationsService, private workExperienceService: WorkExperiencesService) { }
