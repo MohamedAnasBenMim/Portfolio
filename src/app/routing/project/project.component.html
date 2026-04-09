@@ -37,16 +37,26 @@
 
           <!-- slide -->
           <div *ngFor="let pic of getProjectPictures(); let i = index" class="swiper-slide swiper-slide-next">
-            <!-- item frame -->
-            <a data-fancybox="gallery"
-              href="../../../assets/projects/{{pic}}"
-               class="art-a art-portfolio-item-frame art-horizontal">
-              <!-- img -->
-              <img src="../../../assets/projects/{{pic}}"alt="item">
-              <!-- zoom icon -->
-              <span class="art-item-hover"><i class="fas fa-expand"></i></span>
-            </a>
-            <!-- item end -->
+            <ng-container *ngIf="!isVideoFile(pic); else videoSlide">
+              <!-- item frame -->
+              <a data-fancybox="gallery"
+                href="../../../assets/projects/{{pic}}"
+                 class="art-a art-portfolio-item-frame art-horizontal">
+                <!-- img -->
+                <img src="../../../assets/projects/{{pic}}"alt="item">
+                <!-- zoom icon -->
+                <span class="art-item-hover"><i class="fas fa-expand"></i></span>
+              </a>
+              <!-- item end -->
+            </ng-container>
+            <ng-template #videoSlide>
+              <div class="art-a art-portfolio-item-frame art-horizontal" style="padding: 0;">
+                <video controls preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="../../../assets/projects/{{pic}}" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </ng-template>
           </div>
           <!-- slide end-->
 
@@ -145,13 +155,13 @@
         <div class="art-table p-15-15">
           <ul>
             <li>
-              <h6>Github link:</h6><a style="cursor: pointer;" href={{project?.location}} target="_blank">{{project?.name }}</a>
+              <h6>Github link:</h6><a style="cursor: pointer;" href={{project?.location}} target="_blank">{{getProjectGithubLabel()}}</a>
             </li>
             <li>
               <h6>Start Date:</h6><span>{{project?.startDate | date:'dd.MM.yyyy' }}</span>
             </li>
             <li>
-              <h6>Final Date:</h6><span>{{project?.endDate | date:'dd.MM.yyyy' }}</span>
+              <h6>Final Date:</h6><span>{{project?.status?.toLowerCase() === 'in progress' ? 'Present' : (project?.endDate | date:'dd.MM.yyyy') }}</span>
             </li>
             <li>
               <h6>Status:</h6><span>{{project?.status}}</span>

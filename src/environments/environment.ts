@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.samer.com'
+  apiUrl: 'https://api.anas.com'
 
 };
 

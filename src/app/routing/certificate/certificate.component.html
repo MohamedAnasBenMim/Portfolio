@@ -40,7 +40,18 @@
             <span>{{certificate.description}}</span>
             <!-- <h6>Credential ID:</h6>
             <span>{{certificate.credentialId}}</span> -->
-            <h6>Url:</h6><a href="{{certificate.url}}" target="_blank">{{certificate.url}}</a>
+            <h6>Url:</h6><a href="{{certificate.url}}" target="_blank" rel="noopener noreferrer" data-no-swup>{{certificate.url}}</a>
+            <div *ngIf="certificate.url === 'https://education.gov.tn/?lang=fr'" style="margin-top: 12px;">
+              <img src="/assets/iau-achievement.jpg" alt="IAU achievement" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </div>
+            <div *ngIf="certificate.url === 'https://events.vtools.ieee.org/m/513934'" style="margin-top: 12px;">
+              <img src="/assets/wiempower-team.jpg" alt="WIEMPOWER team" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </div>
+            <h6 *ngIf="certificate.credentialId && certificate.credentialId !== 'Links'">Certificate:</h6>
+            <a *ngIf="certificate.credentialId && certificate.credentialId !== 'Links'" [href]="certificate.credentialId" target="_blank" rel="noopener noreferrer" data-no-swup download>Open certificate PDF</a>
+            <div *ngIf="certificate.url === 'https://icpc.global/regionals/finder/TCPC'" style="margin-top: 12px;">
+              <img src="/assets/tcpc-team.jpg" alt="TCPC team" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </div>
           </div>
         </div>
 

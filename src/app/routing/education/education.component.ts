@@ -13,15 +13,15 @@ import { WorkExperiencesService } from "../../services/work-experience/work-expe
 export class EducationComponent implements OnInit {
   ed1: Education = new Education(
     `
-   INSAT `,
+   ENSI – National School of Computer Science `,
     "Software Engineering Cycle",
     "Computer Science",
     false,
-    new Date("2021-09-01"),
-    new Date("2024-7-01"),
+    new Date("2024-09-01"),
+    new Date("2027-7-01"),
     "France",
     [
-"I am currently pursuing my 4th year of Software Engineering studies at the National Institute of Applied Science and Technology. I am projected to graduate from INSAT with a degree in Software Engineering in 2024, completing my studies with a solid foundation of knowledge and experience in the field."
+"I am currently pursuing my Software Engineering studies at the National School of Computer Science (ENSI). I am expected to graduate in 2027 with a degree in Software Engineering, building a strong foundation in computer science, software development, and system design through both academic and practical experiences."
     ],
     [
       "a",
@@ -30,15 +30,15 @@ export class EducationComponent implements OnInit {
                                                                                                                                                                           
   );
   ed2: Education = new Education(
-    "INSAT",
+    "Preparatory Institute for Engineering Studies of Nabeul (IPEIN)",
     "Pre-Engineering Cycle",
     "Computer Science",
     false,
-    new Date("2019-09-01"),
-    new Date("2021-07-01"),
+    new Date("2022-09-01"),
+    new Date("2024-07-01"),
     "France",
     [
-      "I am proud to have successfully completed my 2-year pre-engineering cycle  at the national institute of applied science and technology with distinction, standing out as one of the top-performing students in my graduating cohort."
+      "Completed a rigorous pre-engineering program with a strong foundation in mathematics, physics, and computer science. Ranked 274th out of 1750 in the national entrance exam (Math-Physics track). Developed strong analytical thinking, discipline, and the ability to handle intensive academic workloads in a highly competitive environment."
     ],
     [
       "a",
@@ -47,15 +47,15 @@ export class EducationComponent implements OnInit {
 
   );
   ed3: Education = new Education(
-    "LYCEE ENFIDHA 2",
+    "LYCEE ENFIDHA 1",
     "Baccalaureate in Mathematics",
     "Computer Science",
-    true,
-    new Date("2015-11-01"),
-    new Date("2019-07-01"),
+    false,
+    new Date("2021-09-01"),
+    new Date("2022-07-01"),
     "France",
     [
-      "Achieving the National diploma Baccalaureat in MATHEMATICS with high honors and exceptional distinction, earning a grade of 17 out of 20, is a source of immense pride for me "
+      "Achieving the National diploma Baccalaureat in MATHEMATICS with honors and exceptional distinction, earning a grade of 15 out of 20, is a source of immense pride for me "
     ],
     [
       "a",

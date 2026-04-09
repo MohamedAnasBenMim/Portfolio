@@ -49,7 +49,7 @@ export class ExperienceSummaryComponent implements OnInit {
         customers.add(project.client);
       });
       // return customers.size;
-      return 300;
+      return 500;
     }
     return 0;
   }
