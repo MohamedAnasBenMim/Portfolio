@@ -155,7 +155,7 @@
         <div class="art-table p-15-15">
           <ul>
             <li>
-              <h6>Github link:</h6><a style="cursor: pointer;" href={{project?.location}} target="_blank">{{getProjectGithubLabel()}}</a>
+              <h6>Github link:</h6><a *ngIf="project?.location; else noRepo" style="cursor: pointer;" href={{project?.location}} target="_blank">{{getProjectGithubLabel()}}</a><ng-template #noRepo><span>Coming soon</span></ng-template>
             </li>
             <li>
               <h6>Start Date:</h6><span>{{project?.startDate | date:'dd.MM.yyyy' }}</span>
