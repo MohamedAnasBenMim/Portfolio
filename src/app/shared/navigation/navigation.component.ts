@@ -18,7 +18,11 @@ export class NavigationComponent implements OnInit {
   p6 = new Project("PROMPTPAY", "PromptPay is an innovative AI-powered e-commerce checkout platform designed to transform the traditional online purchasing experience.", "Completed", "FinTech", new Date("2025-12-01"), new Date("2025-12-20"), "https://github.com/MohamedAnasBenMim/Tunihack11.0", "Client 1", ["Next.js", "React", "TypeScript", "Groq AI", "Stripe API"], ["demo.mp4"]);
   p5 = new Project("Ecommerce", "Description 1", "completed", "Category 1", new Date(), new Date(), "Location 1", "Client 1", ["Tech 1", "Tech 2"], ["Link 1", "Link 2"]);
   p9 = new Project("3D Solar System", "Description 1", "completed", "Category 1", new Date(), new Date(), "Location 1", "Client 1", ["Tech 1", "Tech 2"], ["Link 1", "Link 2"]);
-  projects: Project[] = [this.p1, this.p2, this.p3, this.p4, this.p6];
+  p10 = new Project("CodeAtlas", "Intelligent codebase analyzer: CLI and GitHub integration for dependency analysis, architectural violations and change-impact reports.", "in progress", "Software Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["Python", "GitHub Actions"], ["codeatlas-cover.svg"]);
+  p11 = new Project("FlowForge", "Durable distributed workflow execution engine with retries, idempotency and fault recovery.", "in progress", "Backend Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["FastAPI", "PostgreSQL", "Redis"], ["flowforge-cover.svg"]);
+  p12 = new Project("SignalBoard", "Real-time analytics workspace with streaming charts and virtualized data tables.", "in progress", "Frontend Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["React", "TypeScript"], ["signalboard-cover.svg"]);
+  p13 = new Project("CollabDesk", "Multi-tenant SaaS collaboration platform with RBAC, real-time workspaces and audit trails.", "in progress", "Full-Stack Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["Next.js", "NestJS", "PostgreSQL"], ["collabdesk-cover.svg"]);
+  projects: Project[] = [this.p1, this.p2, this.p3, this.p4, this.p6, this.p10, this.p11, this.p12, this.p13];
 
   constructor(private projectService: ProjectsService, private elementRef:ElementRef, private router: Router) { }
 
