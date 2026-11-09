@@ -1,7 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ProjectsService} from "../../services/projects/projects.service";
-import Project from "../../models/Project";
-// import {addCommandModuleToYargs} from "@angular/cli/src/command-builder/utilities/command";
 
 @Component({
   selector: 'app-experience-summary',
@@ -11,53 +8,20 @@ import Project from "../../models/Project";
 })
 export class ExperienceSummaryComponent implements OnInit {
 
-  projects: Project[] = [];
-
-  constructor(private projectsService: ProjectsService) {
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.projectsService.getProjects().subscribe(projects => {
-      this.projects = projects;
-    });
   }
 
   getExperienceYears(): number {
-    let date = new Date();
-    if (this.projects) {
-      this.projects.forEach(project => {
-        let projectDate = new Date(project.startDate);
-        if (projectDate < date) {
-          date = projectDate;
-        }
-      });
-    }
     return 2;
   }
 
   getCompletedProjectsCount(): number {
-    // if (this.projects) {
-    //   return this.projects.filter(project => project.status === 'Finished').length;
-    // }
-    return 20;
+    return 7;
   }
 
   getCustomersCount(): number {
-    if (this.projects) {
-      let customers = new Set();
-      this.projects.forEach(project => {
-        customers.add(project.client);
-      });
-      // return customers.size;
-      return 500;
-    }
-    return 0;
-  }
-
-  getProjectInProgressCount(): number {
-    if (this.projects) {
-      return this.projects.filter(project => project.status === 'In Progress').length;
-    }
-    return 0;
+    return 500;
   }
 }

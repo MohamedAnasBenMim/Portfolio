@@ -1,7 +1,3 @@
-import Location from "./Location";
-import Technology from "./Technology";
-import ProjectLink from "./ProjectLink";
-
 export default class Project {
   private _name: string;
   private _description: string;

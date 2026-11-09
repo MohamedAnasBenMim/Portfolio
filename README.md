@@ -1,27 +1,48 @@
-# Portfolio
+# Mohamed Anas Ben Mim — Software Engineering Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+A responsive Angular portfolio presenting my software engineering, backend, frontend, and full-stack work. The site combines professional experience, education, skills, achievements, certifications, and detailed project case studies.
 
-## Development server
+## Featured engineering projects
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+| Project | Focus | Engineering highlights |
+| --- | --- | --- |
+| [CodeAtlas](https://github.com/MohamedAnasBenMim/CodeAtlas) | Software Engineering | AST dependency analysis, architecture policies, change-impact reports, tests and CI |
+| [FlowForge](https://github.com/MohamedAnasBenMim/FlowForge) | Backend Engineering | Durable workflows, PostgreSQL state, Redis workers, retries, idempotency and recovery |
+| [SignalBoard](https://github.com/MohamedAnasBenMim/SignalBoard) | Frontend Engineering | Live analytics, 100,000-row virtualization, accessibility, Playwright and Lighthouse |
+| [CollabDesk](https://github.com/MohamedAnasBenMim/CollabDesk) | Full-Stack Engineering | Multi-tenant SaaS, JWT, RBAC, Prisma, real-time workspaces and audit trails |
 
-## Code scaffolding
+The portfolio also includes E-Fatoora, Smart Stock System, ZumPortal, Socially, and PromptPay.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Stack
 
-## Build
+- Angular 14 and TypeScript
+- Bootstrap-based responsive layout
+- Swiper and Fancybox media galleries
+- Netlify SPA routing
+- Karma/Jasmine unit-test setup
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Local development
 
-## Running unit tests
+```bash
+npm install
+npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open `http://localhost:4200`.
 
-## Running end-to-end tests
+## Quality checks
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm run build
+npm test -- --watch=false --browsers=ChromeHeadless
+```
 
-## Further help
+The production build is generated in `dist/portfolio`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Deployment
+
+`netlify.toml` configures the Angular build and redirects client-side routes to `index.html`.
+
+## Author
+
+Mohamed Anas Ben Mim — Software Engineer based in Tunisia.

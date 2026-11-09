@@ -43,7 +43,7 @@
                 href="../../../assets/projects/{{pic}}"
                  class="art-a art-portfolio-item-frame art-horizontal">
                 <!-- img -->
-                <img src="../../../assets/projects/{{pic}}"alt="item">
+                <img src="../../../assets/projects/{{pic}}" alt="{{project?.name}} project preview">
                 <!-- zoom icon -->
                 <span class="art-item-hover"><i class="fas fa-expand"></i></span>
               </a>
@@ -155,7 +155,7 @@
         <div class="art-table p-15-15">
           <ul>
             <li>
-              <h6>Github link:</h6><a *ngIf="project?.location; else noRepo" style="cursor: pointer;" href={{project?.location}} target="_blank">{{getProjectGithubLabel()}}</a><ng-template #noRepo><span>Coming soon</span></ng-template>
+              <h6>GitHub repository:</h6><a *ngIf="project?.location; else noRepo" style="cursor: pointer;" href={{project?.location}} target="_blank" rel="noopener noreferrer">{{getProjectGithubLabel()}}</a><ng-template #noRepo><span>Coming soon</span></ng-template>
             </li>
             <li>
               <h6>Start Date:</h6><span>{{project?.startDate | date:'dd.MM.yyyy' }}</span>

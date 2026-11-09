@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ProjectsService} from "../../services/projects/projects.service";
 import Project from "../../models/Project";
 import {ActivatedRoute} from "@angular/router";
 
@@ -23,58 +22,34 @@ The platform includes features such as task management for organizing daily work
 
 The application includes advanced features such as real-time notifications to keep users updated on activities, dynamic content feeds, and efficient data handling to ensure fast performance even with large user interactions. Built with a scalable architecture, Socially provides a responsive and intuitive interface, making it easy for users to navigate, engage, and stay connected within the platform.`, "completed", "Social Media", new Date("2025-11-01"), new Date("2025-11-30"), "https://github.com/MohamedAnasBenMim/Socially", "Client 1", ["Next.js", "React", "Prisma", "PostgreSQL"], ["socially1.png", "socially2.png", "socially3.png", "socially4.png"]);
   p6 = new Project("PROMPTPAY", `PromptPay is an innovative AI-powered e-commerce checkout platform designed to transform the traditional online purchasing experience by replacing complex checkout forms with natural conversational interactions. The platform enables users to communicate directly with an intelligent AI assistant to manage their shopping cart, add payment methods, and complete purchases through simple chat commands. It provides a seamless and intuitive buying journey where users can naturally express actions such as reviewing cart items, adding payment cards, and confirming purchases without navigating multiple forms or pages. The application integrates secure Stripe payment processing for real-time transactions and includes advanced security mechanisms such as encrypted password protection for payment confirmation. Built with a modern scalable architecture, PromptPay combines artificial intelligence, secure payment systems, and responsive UI design to deliver a fast, engaging, and user-friendly checkout experience for modern e-commerce applications.`, "Completed", "FinTech", new Date("2025-12-01"), new Date("2025-12-20"), "https://github.com/MohamedAnasBenMim/Tunihack11.0", "Client 1", ["Next.js", "React", "TypeScript", "Groq AI", "Stripe API"], ["demo.mp4"]);
-  p5 = new Project("Ecommerce", "Description 1", "completed", "Category 1", new Date(), new Date(), "Location 1", "Client 1", ["Tech 1", "Tech 2"], ["Link 1", "Link 2"]);
-  p9 = new Project("3D Solar System", "Description 1", "completed", "Category 1", new Date(), new Date(), "Location 1", "Client 1", ["Tech 1", "Tech 2"], ["Link 1", "Link 2"]);
   p10 = new Project("CodeAtlas", `CodeAtlas is an intelligent codebase analyzer that helps engineering teams understand, protect, and evolve the architecture of their software. It ships as a command-line tool and a GitHub integration that scan a repository, build a full dependency graph of its modules, and surface the structural problems that are hard to see in day-to-day code review.
 
-The analyzer detects architectural violations such as forbidden layer dependencies and circular imports, and performs change-impact analysis to identify which modules are likely to be affected by a given change before it is merged. Results are published as automated reports directly on pull requests and as standalone summaries. Quality is backed by unit and integration test suites, along with analysis benchmarks that measure accuracy and scan speed on real-world repositories.`, "in progress", "Software Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["Python", "Typer CLI", "AST Parsing", "NetworkX", "GitHub Apps API", "GitHub Actions", "Pytest", "Docker"], ["codeatlas-cover.svg"]);
+The analyzer detects architectural violations such as forbidden layer dependencies and circular imports, and performs change-impact analysis to identify which modules are likely to be affected by a given change before it is merged. Results are available as Markdown or JSON reports and the repository includes a reusable Docker-based GitHub Action. Quality is backed by unit, integration, report, and performance tests.`, "completed", "Software Engineering", new Date("2026-11-01"), new Date("2026-11-09"), "https://github.com/MohamedAnasBenMim/CodeAtlas", "Portfolio", ["Python", "Typer CLI", "AST Parsing", "NetworkX", "GitHub Actions", "Pytest", "Docker"], ["codeatlas-cover.svg"]);
   p11 = new Project("FlowForge", `FlowForge is a durable, distributed workflow execution engine built to run long-lived, multi-step business processes reliably at scale. Workflows are defined and triggered through REST APIs, then executed by a pool of background workers that pull tasks from Redis queues while every state transition is persisted in PostgreSQL.
 
-The engine is designed around failure: it supports configurable retry policies with exponential backoff, idempotency keys that guarantee each step runs exactly once from the caller's point of view, and automatic fault recovery that resumes interrupted workflows after a worker or node crash. Performance is validated with load benchmarks that measure throughput and p95 latency under concurrent workloads.`, "in progress", "Backend Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["FastAPI", "Python", "PostgreSQL", "Redis", "SQLAlchemy", "Docker", "Locust", "Pytest", "GitHub Actions"], ["flowforge-cover.svg"]);
+The engine is designed around failure: it supports configurable retry policies with exponential backoff, database-enforced idempotency keys, and automatic recovery that resumes interrupted workflows after a worker crash. The repository includes integration tests, a Docker Compose environment, and a Locust benchmark for throughput and p95 latency.`, "completed", "Backend Engineering", new Date("2026-11-01"), new Date("2026-11-09"), "https://github.com/MohamedAnasBenMim/FlowForge", "Portfolio", ["FastAPI", "Python", "PostgreSQL", "Redis", "SQLAlchemy", "Docker", "Locust", "Pytest", "GitHub Actions"], ["flowforge-cover.svg"]);
   p12 = new Project("SignalBoard", `SignalBoard is a real-time analytics workspace for exploring and monitoring live data. Built with React and TypeScript, it streams updates into the interface as they happen and lets users assemble their own views from customizable charts and widgets on a responsive layout that adapts from large monitors to mobile screens.
 
-The dashboard handles large datasets with virtualized data tables that stay smooth with hundreds of thousands of rows, and it is fully keyboard accessible. Quality is enforced with end-to-end tests in Playwright, Lighthouse audits for performance and accessibility, and dedicated rendering-performance tests that keep frame rates stable under continuous streaming.`, "in progress", "Frontend Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["React", "TypeScript", "WebSockets", "TanStack Table", "Recharts", "Tailwind CSS", "Playwright", "Lighthouse"], ["signalboard-cover.svg"]);
+The dashboard handles 100,000 events with a virtualized table and remains fully keyboard accessible. Quality is enforced with unit tests, desktop and mobile Playwright scenarios, Lighthouse budgets, and a rendering-performance guard.`, "completed", "Frontend Engineering", new Date("2026-11-01"), new Date("2026-11-09"), "https://github.com/MohamedAnasBenMim/SignalBoard", "Portfolio", ["React", "TypeScript", "WebSockets", "TanStack Virtual", "Recharts", "Playwright", "Lighthouse"], ["signalboard-cover.svg"]);
   p13 = new Project("CollabDesk", `CollabDesk is a complete multi-tenant SaaS collaboration platform where teams organize their work in shared workspaces. Each organization is fully isolated, with its own members, workspaces, and data, and access is controlled through role-based permissions (RBAC) that define exactly what owners, admins, members, and guests can see and do.
 
-The platform includes secure authentication, collaborative workspaces with real-time updates so every member sees changes instantly, and complete audit trails that record who did what and when. A documented REST API powers a polished frontend, and the product is deployed as a working public demo.`, "in progress", "Full-Stack Engineering", new Date("2026-11-01"), new Date("2026-11-01"), "", "Client 1", ["Next.js", "React", "TypeScript", "NestJS", "PostgreSQL", "Prisma", "WebSockets", "JWT", "Docker", "Vercel"], ["collabdesk-cover.svg"]);
-  projects: Project[] = [this.p2, this.p1, this.p3, this.p4, this.p6, this.p9, this.p10, this.p11, this.p12, this.p13];
+The platform includes JWT authentication, organization-scoped guards, collaborative workspaces with Socket.IO updates, and complete audit trails that record who changed what. A validated REST API powers a polished Next.js frontend, and Docker Compose provides a reproducible local deployment.`, "completed", "Full-Stack Engineering", new Date("2026-11-01"), new Date("2026-11-09"), "https://github.com/MohamedAnasBenMim/CollabDesk", "Portfolio", ["Next.js", "React", "TypeScript", "NestJS", "PostgreSQL", "Prisma", "WebSockets", "JWT", "Docker"], ["collabdesk-cover.svg"]);
+  projects: Project[] = [this.p10, this.p11, this.p12, this.p13, this.p2, this.p1, this.p3, this.p4, this.p6];
 
   project: Project | undefined;
   routeSub: any;
 
-  constructor(private projectService: ProjectsService, private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    //this.projectService.getProjects().subscribe(projects => {
-      //this.projects = projects;
-      this.routeSub = this.route.params.subscribe(params => {
-console.log( params['name'])
-this.projects.forEach(project => {
-          console.log(project)
-          if (project.name === params['name']) {
-            this.project = project;    
-
-          }
-        });
-      });
-  //  });
+    this.routeSub = this.route.params.subscribe(params => {
+      this.project = this.projects.find(project => project.name === params['name']);
+    });
   }
 
   getProjectTechnologies(): string {
-    console.log(this.project)
-    let technologies = "";
-    if (this.project) {
-      for (let i = 0; i < this.project.technologies.length; i++) {
-        technologies += this.project.technologies[i];
-
-        if (this.project.technologies.length - 1 !== i) {
-          technologies += ", ";
-        }
-      }
-    }
-console.log(this.project)
-    return technologies;
+    return this.project?.technologies.join(', ') || '';
   }
 
   getProject(): Project | undefined {
@@ -82,13 +57,7 @@ console.log(this.project)
   }
 
   getProjectPictures(): string[] | undefined {
-    let links: string[] = [];
-    this.project?.links.forEach(link => {
-      //if (link === "Image") {
-        links.push(link);
-      //}
-    });
-    return links
+    return this.project?.links || [];
   }
 
   getProjectLinks(): string[] {
