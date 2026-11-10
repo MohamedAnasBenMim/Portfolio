@@ -79,6 +79,12 @@
 .engineering-project-card.rose { --project-accent: #fb7185; }
 .engineering-project-card.indigo { --project-accent: #818cf8; }
 .engineering-project-card.orange { --project-accent: #fb923c; }
+.engineering-project-card.sky { --project-accent: #38bdf8; }
+.engineering-project-card.lime { --project-accent: #a3e635; }
+.engineering-project-card.red { --project-accent: #f87171; }
+.engineering-project-card.yellow { --project-accent: #facc15; }
+.engineering-project-card.purple { --project-accent: #c084fc; }
+.engineering-project-card.slate { --project-accent: #94a3b8; }
 
 .ai-data-section {
   background: linear-gradient(180deg, transparent, rgba(34, 211, 238, .025) 45%, transparent);
@@ -106,6 +112,25 @@
 
 .ai-project-grid .engineering-project-card:last-child {
   background: linear-gradient(145deg, rgba(46, 42, 52, .96), rgba(31, 31, 40, .98));
+}
+
+.cloud-platform-section {
+  background: linear-gradient(180deg, transparent, rgba(56, 189, 248, .025) 45%, transparent);
+  padding-top: 45px;
+}
+
+.cloud-kicker { color: #7dd3fc; }
+
+.cloud-proof {
+  border-color: rgba(125, 211, 252, .22);
+  color: #bae6fd;
+}
+
+.cloud-proof i { color: #38bdf8; }
+
+.cloud-project-grid .engineering-project-card:nth-child(5),
+.cloud-project-grid .engineering-project-card:nth-child(6) {
+  background: linear-gradient(145deg, rgba(39, 43, 52, .96), rgba(31, 31, 40, .98));
 }
 
 .engineering-project-card:hover {

@@ -21,6 +21,17 @@ A responsive Angular portfolio presenting my software engineering, backend, fron
 | [EvidenceAI](https://github.com/MohamedAnasBenMim/EvidenceAI) | LLM / RAG Engineering | Hybrid retrieval, permissions, reranking, grounded citations and systematic evaluation |
 | [StreamPulse](https://github.com/MohamedAnasBenMim/StreamPulse) | Data Engineering | Kafka-compatible ingestion, DLQ recovery, warehouse models and data quality monitoring |
 
+## Cloud, DevOps, SRE and distributed systems
+
+| Project | Focus | Measured highlights |
+| --- | --- | --- |
+| [CloudBlueprint](https://github.com/MohamedAnasBenMim/CloudBlueprint) | Cloud Engineering | Validated Terraform, multi-AZ AWS design, encrypted data, monitoring, backup and recovery |
+| [ReleaseRail](https://github.com/MohamedAnasBenMim/ReleaseRail) | DevOps | Tested faulty release detection, automatic rollback and 100% controller coverage |
+| [ReliabilityLab](https://github.com/MohamedAnasBenMim/ReliabilityLab) | SRE | SLO evaluation, correlated telemetry, 300 ms detection and 1.95 s recovery experiment |
+| [DevLaunch](https://github.com/MohamedAnasBenMim/DevLaunch) | Platform Engineering | Golden-path scaffolding, service catalog, 1.45 ms p95 local onboarding and 97.65% coverage |
+| [QuorumKV](https://github.com/MohamedAnasBenMim/QuorumKV) | Distributed Systems | Quorum commits, partition safety, leader recovery and 335 local writes/s |
+| [InfraFoundry](https://github.com/MohamedAnasBenMim/InfraFoundry) | Infrastructure Engineering | Ansible hardening, HAProxy failover, checksum backups and verified restoration |
+
 The portfolio also includes E-Fatoora, Smart Stock System, ZumPortal, Socially, and PromptPay.
 
 ## Stack

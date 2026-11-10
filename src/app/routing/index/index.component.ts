@@ -104,6 +104,69 @@ export class IndexComponent implements OnInit {
     }
   ];
 
+  readonly cloudPlatformProjects: FeaturedProject[] = [
+    {
+      name: 'CloudBlueprint',
+      role: 'Cloud Engineering',
+      summary: 'A secure AWS reference architecture with segmented networking, private compute, managed data, monitoring, backups, and recovery.',
+      cover: 'cloudblueprint-cover.svg',
+      technologies: ['Terraform', 'AWS', 'ECS', 'RDS'],
+      proof: '5 tests · Terraform validated',
+      repository: 'https://github.com/MohamedAnasBenMim/CloudBlueprint',
+      accent: 'sky'
+    },
+    {
+      name: 'ReleaseRail',
+      role: 'DevOps',
+      summary: 'A GitOps delivery reference with CI gates, container scanning, Kubernetes health checks, desired-state sync, and automatic rollback.',
+      cover: 'releaserail-cover.svg',
+      technologies: ['GitHub Actions', 'Docker', 'Kubernetes', 'Trivy'],
+      proof: '5 tests · 100% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/ReleaseRail',
+      accent: 'lime'
+    },
+    {
+      name: 'ReliabilityLab',
+      role: 'Site Reliability Engineering',
+      summary: 'An SLO laboratory that correlates metrics, traces, and logs while measuring error budgets, detection delay, and recovery under faults.',
+      cover: 'reliabilitylab-cover.svg',
+      technologies: ['Prometheus', 'Grafana', 'Tempo', 'Loki'],
+      proof: '300ms detect · 1.95s recover',
+      repository: 'https://github.com/MohamedAnasBenMim/ReliabilityLab',
+      accent: 'red'
+    },
+    {
+      name: 'DevLaunch',
+      role: 'Platform Engineering',
+      summary: 'A self-service developer platform that scaffolds golden-path services, isolated environments, ownership, documentation, and catalog status.',
+      cover: 'devlaunch-cover.svg',
+      technologies: ['Python', 'FastAPI', 'Kubernetes', 'Templates'],
+      proof: '1.45ms p95 · 98% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/DevLaunch',
+      accent: 'yellow'
+    },
+    {
+      name: 'QuorumKV',
+      role: 'Distributed Systems',
+      summary: 'A durable three-node key-value store with leader election, quorum commits, replicated logs, crash recovery, and partition testing.',
+      cover: 'quorumkv-cover.svg',
+      technologies: ['Python', 'Consensus', 'Replication', 'Persistence'],
+      proof: '335 writes/s · 93% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/QuorumKV',
+      accent: 'purple'
+    },
+    {
+      name: 'InfraFoundry',
+      role: 'Infrastructure Engineering',
+      summary: 'An automated Linux HA lab with Ansible hardening, HAProxy failover, health checks, checksum backups, and verified disaster recovery.',
+      cover: 'infrafoundry-cover.svg',
+      technologies: ['Ansible', 'Linux', 'HAProxy', 'Backups'],
+      proof: '5 tests · 100% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/InfraFoundry',
+      accent: 'slate'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -138,5 +201,5 @@ interface FeaturedProject {
   technologies: string[];
   proof: string;
   repository: string;
-  accent: 'teal' | 'amber' | 'blue' | 'violet' | 'cyan' | 'green' | 'rose' | 'indigo' | 'orange';
+  accent: 'teal' | 'amber' | 'blue' | 'violet' | 'cyan' | 'green' | 'rose' | 'indigo' | 'orange' | 'sky' | 'lime' | 'red' | 'yellow' | 'purple' | 'slate';
 }
