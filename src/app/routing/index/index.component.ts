@@ -8,6 +8,49 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
+  readonly featuredProjects: FeaturedProject[] = [
+    {
+      name: 'CodeAtlas',
+      role: 'Software Engineering',
+      summary: 'Architecture-aware code analysis with dependency graphs, policy checks, and transitive change-impact reports.',
+      cover: 'codeatlas-cover.svg',
+      technologies: ['Python', 'NetworkX', 'Typer', 'Pytest'],
+      proof: '5 tests · 80% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/CodeAtlas',
+      accent: 'teal'
+    },
+    {
+      name: 'FlowForge',
+      role: 'Backend Engineering',
+      summary: 'A durable workflow engine designed around retries, idempotency, persisted state, and worker recovery.',
+      cover: 'flowforge-cover.svg',
+      technologies: ['FastAPI', 'PostgreSQL', 'Redis', 'Docker'],
+      proof: '6 tests · 83% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/FlowForge',
+      accent: 'amber'
+    },
+    {
+      name: 'SignalBoard',
+      role: 'Frontend Engineering',
+      summary: 'An accessible live analytics workspace with streaming charts and a virtualized 100,000-row event table.',
+      cover: 'signalboard-cover.svg',
+      technologies: ['React', 'TypeScript', 'Recharts', 'Playwright'],
+      proof: '100k rows · Lighthouse CI',
+      repository: 'https://github.com/MohamedAnasBenMim/SignalBoard',
+      accent: 'blue'
+    },
+    {
+      name: 'CollabDesk',
+      role: 'Full-Stack Engineering',
+      summary: 'A multi-tenant collaboration SaaS with JWT authentication, organization RBAC, live updates, and audit trails.',
+      cover: 'collabdesk-cover.svg',
+      technologies: ['Next.js', 'NestJS', 'Prisma', 'WebSockets'],
+      proof: 'RBAC tested · CI verified',
+      repository: 'https://github.com/MohamedAnasBenMim/CollabDesk',
+      accent: 'violet'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,4 +75,15 @@ export class IndexComponent implements OnInit {
 interface Card {
   title: string;
   description: string;
+}
+
+interface FeaturedProject {
+  name: string;
+  role: string;
+  summary: string;
+  cover: string;
+  technologies: string[];
+  proof: string;
+  repository: string;
+  accent: 'teal' | 'amber' | 'blue' | 'violet';
 }

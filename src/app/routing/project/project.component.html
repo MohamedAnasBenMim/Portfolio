@@ -1,5 +1,5 @@
 <!-- container -->
-<div class="container-fluid">
+<div class="container-fluid project-detail-hero">
 
   <!-- row -->
   <div class="row p-30-0">
@@ -17,7 +17,10 @@
         <!-- title frame end -->
         <!-- right frame -->
         <div class="art-right-frame">
-          <div class="art-project-category">{{project?.category}}</div>
+          <div class="project-heading-meta">
+            <span class="project-complete-dot"><i></i>{{project?.status}}</span>
+            <div class="art-project-category">{{project?.category}}</div>
+          </div>
         </div>
         <!-- right frame end -->
       </div>
@@ -41,7 +44,7 @@
               <!-- item frame -->
               <a data-fancybox="gallery"
                 href="../../../assets/projects/{{pic}}"
-                 class="art-a art-portfolio-item-frame art-horizontal">
+                 class="art-a art-portfolio-item-frame art-horizontal project-cover-frame">
                 <!-- img -->
                 <img src="../../../assets/projects/{{pic}}" alt="{{project?.name}} project preview">
                 <!-- zoom icon -->
@@ -113,7 +116,7 @@
 <!-- container end -->
 
 <!-- container -->
-<div class="container-fluid">
+<div class="container-fluid project-detail-content">
 
   <!-- row -->
   <div class="row p-30-0">
@@ -138,9 +141,10 @@
     <!-- col -->
     <div class="col-lg-8">
 
-      <div class="art-a art-card art-fluid-card">
+      <div class="art-a art-card art-fluid-card project-description-card">
+        <span class="project-detail-kicker">Engineering case study</span>
         <h5 class="mb-15">Description</h5>
-        <div class="mb-15">{{project?.description}}</div>
+        <div class="mb-15 project-long-description">{{project?.description}}</div>
         <!-- button -->
       </div>
 
@@ -150,12 +154,12 @@
     <!-- col -->
     <div class="col-lg-4">
 
-      <div class="art-a art-card">
+      <div class="art-a art-card project-facts-card">
         <!-- table -->
         <div class="art-table p-15-15">
           <ul>
             <li>
-              <h6>GitHub repository:</h6><a *ngIf="project?.location; else noRepo" style="cursor: pointer;" href={{project?.location}} target="_blank" rel="noopener noreferrer">{{getProjectGithubLabel()}}</a><ng-template #noRepo><span>Coming soon</span></ng-template>
+              <h6>GitHub repository:</h6><a *ngIf="project?.location; else noRepo" class="project-github-button" href={{project?.location}} target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i>{{getProjectGithubLabel()}}</a><ng-template #noRepo><span>Coming soon</span></ng-template>
             </li>
             <li>
               <h6>Start Date:</h6><span>{{project?.startDate | date:'dd.MM.yyyy' }}</span>
@@ -175,7 +179,9 @@
             </li> -->
             <li>
               <h6>Technologies:</h6>
-              <span>{{getProjectTechnologies()}}</span>
+              <div class="project-technology-list">
+                <span *ngFor="let technology of project?.technologies">{{technology}}</span>
+              </div>
             </li>
             <!-- <li *ngFor="let link of getProjectLinks() ">
               <h6>{{link}}</h6>
