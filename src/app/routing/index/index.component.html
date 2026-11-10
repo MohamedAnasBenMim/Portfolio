@@ -91,6 +91,48 @@
         </div>
       </section>
 
+      <section class="container-fluid featured-engineering ai-data-section" aria-labelledby="ai-data-projects-title">
+        <div class="featured-projects-heading">
+          <div>
+            <span class="section-kicker ai-kicker">Intelligent systems · 2026</span>
+            <h2 id="ai-data-projects-title">AI, ML &amp; Data Systems</h2>
+            <p>Five production-minded systems focused on reliable agents, measurable ML, document automation, grounded retrieval, and streaming data.</p>
+          </div>
+          <span class="portfolio-proof"><i class="fas fa-check-circle" aria-hidden="true"></i> Benchmarked &amp; tested</span>
+        </div>
+
+        <div class="engineering-project-grid ai-project-grid">
+          <article *ngFor="let project of aiDataProjects" class="engineering-project-card" [ngClass]="project.accent">
+            <a class="engineering-project-media" [routerLink]="['/projects', project.name]" [attr.aria-label]="'Open ' + project.name + ' case study'">
+              <img [src]="'../../../assets/projects/' + project.cover" [alt]="project.name + ' project cover'" loading="lazy">
+              <span class="engineering-role">{{project.role}}</span>
+              <span class="engineering-status"><i></i> Shipped</span>
+            </a>
+
+            <div class="engineering-project-content">
+              <div class="engineering-project-title-row">
+                <h3>{{project.name}}</h3>
+                <span>{{project.proof}}</span>
+              </div>
+              <p>{{project.summary}}</p>
+
+              <ul class="engineering-tech-list" [attr.aria-label]="project.name + ' technologies'">
+                <li *ngFor="let technology of project.technologies">{{technology}}</li>
+              </ul>
+
+              <div class="engineering-project-actions">
+                <a class="engineering-primary-action" [routerLink]="['/projects', project.name]">
+                  View case study <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a class="engineering-repo-action" [href]="project.repository" target="_blank" rel="noopener noreferrer" [attr.aria-label]="project.name + ' repository on GitHub'">
+                  <i class="fab fa-github" aria-hidden="true"></i> Repository
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <div class="container-fluid">
 
         <!-- row -->

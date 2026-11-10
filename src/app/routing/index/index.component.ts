@@ -51,6 +51,59 @@ export class IndexComponent implements OnInit {
     }
   ];
 
+  readonly aiDataProjects: FeaturedProject[] = [
+    {
+      name: 'AgentPilot',
+      role: 'AI Agent Engineering',
+      summary: 'A reliable tool-using agent runtime with typed contracts, approval gates, failure recovery, and structured execution traces.',
+      cover: 'agentpilot-cover.svg',
+      technologies: ['Python', 'Typed Tools', 'Approvals', 'Tracing'],
+      proof: '5 tests · 93% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/AgentPilot',
+      accent: 'cyan'
+    },
+    {
+      name: 'ModelGuard',
+      role: 'Machine Learning Engineering',
+      summary: 'An end-to-end fraud ML platform covering feature contracts, experiment tracking, versioned serving, drift, and retraining.',
+      cover: 'modelguard-cover.svg',
+      technologies: ['Python', 'FastAPI', 'PR-AUC', 'Drift'],
+      proof: '0.792 PR-AUC · 97% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/ModelGuard',
+      accent: 'green'
+    },
+    {
+      name: 'InvoiceFlow',
+      role: 'Applied AI',
+      summary: 'An intelligent invoice pipeline with structured extraction, validation, uncertainty handling, and human exception review.',
+      cover: 'invoiceflow-cover.svg',
+      technologies: ['Python', 'FastAPI', 'Extraction', 'Human Review'],
+      proof: '100% field accuracy · 98% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/InvoiceFlow',
+      accent: 'rose'
+    },
+    {
+      name: 'EvidenceAI',
+      role: 'LLM / RAG Engineering',
+      summary: 'Permission-aware hybrid retrieval with reranking, metadata filters, grounded answers, citations, and systematic evaluation.',
+      cover: 'evidenceai-cover.svg',
+      technologies: ['Hybrid RAG', 'Reranking', 'Citations', 'FastAPI'],
+      proof: '100% recall@3 · 100% citations',
+      repository: 'https://github.com/MohamedAnasBenMim/EvidenceAI',
+      accent: 'indigo'
+    },
+    {
+      name: 'StreamPulse',
+      role: 'Data Engineering',
+      summary: 'A Kafka-compatible streaming platform with schema validation, idempotent transforms, DLQ recovery, and warehouse models.',
+      cover: 'streampulse-cover.svg',
+      technologies: ['Kafka', 'Redpanda', 'PostgreSQL', 'Data Quality'],
+      proof: '164k events/s · 96% coverage',
+      repository: 'https://github.com/MohamedAnasBenMim/StreamPulse',
+      accent: 'orange'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -85,5 +138,5 @@ interface FeaturedProject {
   technologies: string[];
   proof: string;
   repository: string;
-  accent: 'teal' | 'amber' | 'blue' | 'violet';
+  accent: 'teal' | 'amber' | 'blue' | 'violet' | 'cyan' | 'green' | 'rose' | 'indigo' | 'orange';
 }
