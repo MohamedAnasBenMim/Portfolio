@@ -167,6 +167,29 @@ export class IndexComponent implements OnInit {
     }
   ];
 
+  readonly visionResearchProjects: FeaturedProject[] = [
+    {
+      name: 'VisionInspect',
+      role: 'Computer Vision',
+      summary: 'An industrial defect inspection pipeline with synthetic data preparation, pixel segmentation, calibrated evaluation, ONNX inference, and a review dashboard.',
+      cover: 'visioninspect-cover.svg',
+      technologies: ['PyTorch', 'OpenCV', 'ONNX Runtime', 'FastAPI'],
+      proof: '0.998 pixel AUROC · 0.10ms ONNX',
+      repository: 'https://github.com/MohamedAnasBenMim/VisionInspect',
+      accent: 'magenta'
+    },
+    {
+      name: 'SmartWave Research',
+      role: 'Research Engineering',
+      summary: 'A reproducible RIS optimization study comparing random search, alternating optimization, and a low-latency reinforcement-learning policy under channel shift.',
+      cover: 'smartwave-research-cover.svg',
+      technologies: ['PyTorch', 'NumPy', 'SciPy', 'MLflow'],
+      proof: '12 seeds · 11.18 bit/s/Hz',
+      repository: 'https://github.com/MohamedAnasBenMim/SmartWave-Research',
+      accent: 'electric'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -201,5 +224,5 @@ interface FeaturedProject {
   technologies: string[];
   proof: string;
   repository: string;
-  accent: 'teal' | 'amber' | 'blue' | 'violet' | 'cyan' | 'green' | 'rose' | 'indigo' | 'orange' | 'sky' | 'lime' | 'red' | 'yellow' | 'purple' | 'slate';
+  accent: 'teal' | 'amber' | 'blue' | 'violet' | 'cyan' | 'green' | 'rose' | 'indigo' | 'orange' | 'sky' | 'lime' | 'red' | 'yellow' | 'purple' | 'slate' | 'magenta' | 'electric';
 }

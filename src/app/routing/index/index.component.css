@@ -85,6 +85,8 @@
 .engineering-project-card.yellow { --project-accent: #facc15; }
 .engineering-project-card.purple { --project-accent: #c084fc; }
 .engineering-project-card.slate { --project-accent: #94a3b8; }
+.engineering-project-card.magenta { --project-accent: #f472b6; }
+.engineering-project-card.electric { --project-accent: #a78bfa; }
 
 .ai-data-section {
   background: linear-gradient(180deg, transparent, rgba(34, 211, 238, .025) 45%, transparent);
@@ -131,6 +133,24 @@
 .cloud-project-grid .engineering-project-card:nth-child(5),
 .cloud-project-grid .engineering-project-card:nth-child(6) {
   background: linear-gradient(145deg, rgba(39, 43, 52, .96), rgba(31, 31, 40, .98));
+}
+
+.vision-research-section {
+  background: linear-gradient(180deg, transparent, rgba(244, 114, 182, .025) 45%, transparent);
+  padding-top: 45px;
+}
+
+.research-kicker { color: #f9a8d4; }
+
+.research-proof {
+  border-color: rgba(249, 168, 212, .22);
+  color: #fbcfe8;
+}
+
+.research-proof i { color: #f472b6; }
+
+.research-project-grid .engineering-project-card {
+  background: linear-gradient(145deg, rgba(48, 39, 53, .96), rgba(31, 31, 40, .98));
 }
 
 .engineering-project-card:hover {

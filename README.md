@@ -32,6 +32,13 @@ A responsive Angular portfolio presenting my software engineering, backend, fron
 | [QuorumKV](https://github.com/MohamedAnasBenMim/QuorumKV) | Distributed Systems | Quorum commits, partition safety, leader recovery and 335 local writes/s |
 | [InfraFoundry](https://github.com/MohamedAnasBenMim/InfraFoundry) | Infrastructure Engineering | Ansible hardening, HAProxy failover, checksum backups and verified restoration |
 
+## Computer vision and research engineering
+
+| Project | Focus | Measured highlights |
+| --- | --- | --- |
+| [VisionInspect](https://github.com/MohamedAnasBenMim/VisionInspect) | Computer Vision | 0.998 pixel AUROC, 0.871 Dice, calibrated segmentation and 0.10 ms ONNX inference on controlled synthetic data |
+| [SmartWave Research](https://github.com/MohamedAnasBenMim/SmartWave-Research) | Research Engineering | Multi-seed RIS comparison, 11.183 bit/s/Hz alternating optimization, fairness, timing, generalization and ablations |
+
 The portfolio also includes E-Fatoora, Smart Stock System, ZumPortal, Socially, and PromptPay.
 
 ## Stack

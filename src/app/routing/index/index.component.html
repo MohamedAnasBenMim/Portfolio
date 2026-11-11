@@ -175,6 +175,48 @@
         </div>
       </section>
 
+      <section class="container-fluid featured-engineering vision-research-section" aria-labelledby="vision-research-projects-title">
+        <div class="featured-projects-heading">
+          <div>
+            <span class="section-kicker research-kicker">Experiments with evidence · 2026</span>
+            <h2 id="vision-research-projects-title">Computer Vision &amp; Research Engineering</h2>
+            <p>Two reproducible systems that connect model development to rigorous evaluation: industrial pixel-level inspection and wireless optimization under distribution shift.</p>
+          </div>
+          <span class="portfolio-proof research-proof"><i class="fas fa-flask" aria-hidden="true"></i> Reproducible results</span>
+        </div>
+
+        <div class="engineering-project-grid research-project-grid">
+          <article *ngFor="let project of visionResearchProjects" class="engineering-project-card" [ngClass]="project.accent">
+            <a class="engineering-project-media" [routerLink]="['/projects', project.name]" [attr.aria-label]="'Open ' + project.name + ' case study'">
+              <img [src]="'../../../assets/projects/' + project.cover" [alt]="project.name + ' project cover'" loading="lazy">
+              <span class="engineering-role">{{project.role}}</span>
+              <span class="engineering-status"><i></i> Evaluated</span>
+            </a>
+
+            <div class="engineering-project-content">
+              <div class="engineering-project-title-row">
+                <h3>{{project.name}}</h3>
+                <span>{{project.proof}}</span>
+              </div>
+              <p>{{project.summary}}</p>
+
+              <ul class="engineering-tech-list" [attr.aria-label]="project.name + ' technologies'">
+                <li *ngFor="let technology of project.technologies">{{technology}}</li>
+              </ul>
+
+              <div class="engineering-project-actions">
+                <a class="engineering-primary-action" [routerLink]="['/projects', project.name]">
+                  View research case <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a class="engineering-repo-action" [href]="project.repository" target="_blank" rel="noopener noreferrer" [attr.aria-label]="project.name + ' repository on GitHub'">
+                  <i class="fab fa-github" aria-hidden="true"></i> Repository
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <div class="container-fluid">
 
         <!-- row -->
