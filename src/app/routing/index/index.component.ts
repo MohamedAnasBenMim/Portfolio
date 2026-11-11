@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-index',
@@ -6,7 +6,13 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./index.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  activeProjectArea: ProjectArea = 'all';
+  private revealObserver?: IntersectionObserver;
+  private scrollbarInstance: any;
+  private scrollbarListener?: (status: any) => void;
+  private scrollbarRetry?: number;
 
   readonly featuredProjects: FeaturedProject[] = [
     {
@@ -190,21 +196,140 @@ export class IndexComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private elementRef: ElementRef<HTMLElement>) { }
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+    this.prepareRevealAnimations();
+    this.connectScrollFrame();
+  }
+
+  ngOnDestroy(): void {
+    this.revealObserver?.disconnect();
+    if (this.scrollbarRetry) {
+      window.clearTimeout(this.scrollbarRetry);
+    }
+    if (this.scrollbarInstance && this.scrollbarListener) {
+      this.scrollbarInstance.removeListener(this.scrollbarListener);
+    }
+  }
+
+  get projectAreas(): ProjectAreaOption[] {
+    return [
+      {id: 'all', label: 'All work', count: this.totalFeaturedProjects, icon: 'fa-layer-group'},
+      {id: 'software', label: 'Software', count: this.featuredProjects.length, icon: 'fa-code'},
+      {id: 'ai', label: 'AI & Data', count: this.aiDataProjects.length, icon: 'fa-brain'},
+      {id: 'cloud', label: 'Cloud & Systems', count: this.cloudPlatformProjects.length, icon: 'fa-cloud'},
+      {id: 'research', label: 'Vision & Research', count: this.visionResearchProjects.length, icon: 'fa-flask'}
+    ];
+  }
+
+  get totalFeaturedProjects(): number {
+    return this.featuredProjects.length + this.aiDataProjects.length +
+      this.cloudPlatformProjects.length + this.visionResearchProjects.length;
+  }
+
+  get activeProjectLabel(): string {
+    return this.projectAreas.find(area => area.id === this.activeProjectArea)?.label || 'All work';
+  }
+
+  get activeProjectCount(): number {
+    return this.projectAreas.find(area => area.id === this.activeProjectArea)?.count || this.totalFeaturedProjects;
+  }
+
+  setProjectArea(area: ProjectArea): void {
+    this.activeProjectArea = area;
+    window.setTimeout(() => this.observeVisibleElements(), 0);
+  }
+
+  showArea(area: Exclude<ProjectArea, 'all'>): boolean {
+    return this.activeProjectArea === 'all' || this.activeProjectArea === area;
+  }
+
+  scrollToProjects(): void {
+    this.scrollToElement('project-showcase');
+  }
+
+  scrollToTop(): void {
+    if (this.scrollbarInstance) {
+      this.scrollbarInstance.scrollTo(0, 0, 700);
+      return;
+    }
+    document.getElementById('scrollbar')?.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  private scrollToElement(id: string): void {
+    const target = document.getElementById(id);
+    if (!target) {
+      return;
+    }
+    if (this.scrollbarInstance) {
+      this.scrollbarInstance.scrollIntoView(target, {offsetTop: -20});
+      return;
+    }
+    target.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  private connectScrollFrame(attempt = 0): void {
+    const container = document.getElementById('scrollbar');
+    const scrollbarApi = (window as any).Scrollbar;
+    this.scrollbarInstance = container && scrollbarApi ? scrollbarApi.get(container) : undefined;
+    if (!this.scrollbarInstance && attempt < 15) {
+      this.scrollbarRetry = window.setTimeout(() => this.connectScrollFrame(attempt + 1), 200);
+      return;
+    }
+    if (!this.scrollbarInstance) {
+      return;
+    }
+    this.scrollbarListener = (status: any) => {
+      const progress = status.limit.y > 0 ? status.offset.y / status.limit.y : 0;
+      const progressBar = this.elementRef.nativeElement.querySelector<HTMLElement>('#portfolio-progress-bar');
+      const backToTop = this.elementRef.nativeElement.querySelector<HTMLElement>('.portfolio-back-to-top');
+      progressBar?.style.setProperty('width', `${Math.min(progress * 100, 100)}%`);
+      backToTop?.classList.toggle('is-visible', status.offset.y > 650);
+    };
+    this.scrollbarInstance.addListener(this.scrollbarListener);
+  }
+
+  private prepareRevealAnimations(): void {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = this.elementRef.nativeElement.querySelectorAll<HTMLElement>('.reveal-on-scroll');
+    if (reduceMotion || typeof IntersectionObserver === 'undefined') {
+      targets.forEach(target => target.classList.add('is-visible'));
+      return;
+    }
+    targets.forEach(target => target.classList.add('reveal-ready'));
+    this.revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          this.revealObserver?.unobserve(entry.target);
+        }
+      });
+    }, {root: document.getElementById('scrollbar'), threshold: 0.08, rootMargin: '0px 0px -45px'});
+    this.observeVisibleElements();
+  }
+
+  private observeVisibleElements(): void {
+    if (!this.revealObserver) {
+      return;
+    }
+    this.elementRef.nativeElement.querySelectorAll<HTMLElement>('.reveal-on-scroll:not(.is-visible)')
+      .forEach(target => this.revealObserver?.observe(target));
+  }
+
   getCards(): Card[] {
     return [{
-      title: 'Algorithms Enthusiast',
-      description:"My passion for computer science and coding is deeply rooted in my mathematical background. The logical and analytical thinking skills I acquired through my studies in maths have proven to be invaluable in the field of computer science. They allow me to approach problem-solving with a clear and structured mindset, making it easier for me to find creative solutions to even the most complex challenges. My deep understanding of algorithms & data structures, has also been crucial in writing efficient and effective code. The challenge and satisfaction of solving complex problems through coding is something that I find particularly exciting and motivating, that's why I am passionate about Computer Science, it blends my love for mathematics and problem-solving with the thrill of bringing ideas to life through code."
+      title: 'Systems Thinker',
+      description:'My mathematical background shapes how I approach engineering: break complex problems into clear models, understand the trade-offs, and build solutions whose behavior can be explained and tested.'
     }, {
-      title: 'Astronomy Lover',
-      description:'My deep-seated interest for astronomy and space, combined with my background in software engineering, has led me to envision a future in which I can use my knowledge to push the boundaries of what is possible in this field. My understanding of programming and data analysis can be used to process and interpret large amounts of data from astronomical observations, helping to uncover new discoveries and insights. I am excited about the possibility of using my background to develop new technologies and tools for space exploration. I want to be part of a team that uses technology to advance our knowledge and understanding of the universe. The potential of technology to help us explore the unknown and discover the mysteries of the cosmos is what drives my passion for astronomy and my desire to bring my software engineering background to the field'
+      title: 'Research Mindset',
+      description:'Astronomy keeps me curious about difficult questions and large datasets. I bring that same mindset to software: form a hypothesis, measure the result, document the limits, and improve from evidence.'
     }, {
-      title: 'Guitar Player 🎸',
-      description:'The guitar is my passion. Its rich, expressive sound speaks to my soul and reflects my emotions. Playing the guitar is both challenging and rewarding, as I constantly push myself to improve and master new techniques. The versatility of the guitar, its ability to handle both rhythm and melody, inspires me to explore different styles of music and grow as a musician. The guitar is more than just an instrument—it’s a way for me to express myself and connect with others through the power of music.'
+      title: 'Creative Discipline',
+      description:'Playing guitar is my reminder that strong results come from iteration, patience, and attention to detail. It balances analytical work with creativity and continuous practice.'
     }];
   }
 
@@ -225,4 +350,13 @@ interface FeaturedProject {
   proof: string;
   repository: string;
   accent: 'teal' | 'amber' | 'blue' | 'violet' | 'cyan' | 'green' | 'rose' | 'indigo' | 'orange' | 'sky' | 'lime' | 'red' | 'yellow' | 'purple' | 'slate' | 'magenta' | 'electric';
+}
+
+type ProjectArea = 'all' | 'software' | 'ai' | 'cloud' | 'research';
+
+interface ProjectAreaOption {
+  id: ProjectArea;
+  label: string;
+  count: number;
+  icon: string;
 }

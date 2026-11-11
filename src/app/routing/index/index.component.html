@@ -1,3 +1,9 @@
+      <div class="portfolio-scroll-progress" aria-hidden="true">
+        <span id="portfolio-progress-bar"></span>
+      </div>
+      <button class="portfolio-back-to-top" type="button" (click)="scrollToTop()" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+      </button>
 
       <!-- container -->
       <div class="container-fluid">
@@ -8,25 +14,51 @@
           <div class="col-lg-12">
 
             <!-- banner -->
-            <div class="art-a art-banner" style="background-image: url(../../../assets/img/workspace-rooftop.jpg)">
+            <div class="art-a art-banner portfolio-hero" style="background-image: url(../../../assets/img/workspace-rooftop.jpg)">
               <!-- banner back -->
               <div class="art-banner-back"></div>
               <!-- banner dec -->
               <div class="art-banner-dec"></div>
               <!-- banner overlay -->
-              <div class="art-banner-overlay">
+              <div class="art-banner-overlay portfolio-hero-overlay">
                 <!-- main title -->
                 <div class="art-banner-title">
-                  <!-- title -->
-                  <h1 class="mb-15">Building reliable software,<br>from architecture to interface.</h1>
-                  <!-- suptitle -->
-                 
-                 <div class="art-lg-text art-code mb-25">&lt;<i>code</i>&gt; I  <span
+                  <span class="hero-eyebrow"><i></i> Software engineer · Tunisia</span>
+                  <h1 class="mb-15">Engineering systems that stay reliable <span>under pressure.</span></h1>
+                  <p class="hero-intro">I design, test, and ship software across backend platforms, AI systems, cloud infrastructure, and research engineering.</p>
+
+                  <div class="art-lg-text art-code hero-typing">&lt;<i>code</i>&gt; I <span
                     class="txt-rotate" data-period="2000"
-                    data-rotate='[ "build scalable platforms.", "design durable backend systems.", "craft accessible interfaces.", "turn ideas into tested products."]'></span>&lt;/<i>code</i>&gt;
+                    data-rotate='[ "build scalable platforms.", "design failure-aware systems.", "evaluate models with evidence.", "turn ideas into tested products."]'></span>&lt;/<i>code</i>&gt;
                   </div>
 
+                  <div class="hero-actions">
+                    <button type="button" class="hero-primary-action" (click)="scrollToProjects()">
+                      Explore selected work <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                    </button>
+                    <a class="hero-secondary-action" href="https://github.com/MohamedAnasBenMim" target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-github" aria-hidden="true"></i> GitHub profile
+                    </a>
+                  </div>
+
+                  <dl class="hero-snapshot" aria-label="Portfolio summary">
+                    <div><dt>{{totalFeaturedProjects}}</dt><dd>Featured builds</dd></div>
+                    <div><dt>4</dt><dd>Engineering tracks</dd></div>
+                    <div><dt>100%</dt><dd>Open source</dd></div>
+                  </dl>
+
                 </div> 
+                <div class="hero-system-panel" aria-hidden="true">
+                  <div class="system-panel-bar"><span></span><span></span><span></span><em>engineering.log</em></div>
+                  <div class="system-panel-body">
+                    <p><b>$</b> portfolio inspect</p>
+                    <p><i>✓</i> architecture <span>modular</span></p>
+                    <p><i>✓</i> quality gates <span>automated</span></p>
+                    <p><i>✓</i> benchmarks <span>reproducible</span></p>
+                    <p><i>✓</i> documentation <span>shipped</span></p>
+                    <div class="system-pulse"><small>STATUS</small><strong><i></i> READY TO EXPLORE</strong></div>
+                  </div>
+                </div>
                 <!-- main title end -->
                 <!-- photo -->
                 <!-- <img src="../../../assets/img/4face-2.png" class="art-banner-photo" alt=""> -->
@@ -47,8 +79,32 @@
 
       <app-experience-summary></app-experience-summary>
 
-      <section class="container-fluid featured-engineering" aria-labelledby="featured-projects-title">
-        <div class="featured-projects-heading">
+      <section id="project-showcase" class="container-fluid portfolio-explorer reveal-on-scroll" aria-labelledby="project-explorer-title">
+        <div class="portfolio-explorer-inner">
+          <div class="explorer-copy">
+            <span class="section-kicker">Project explorer</span>
+            <h2 id="project-explorer-title">Browse work by engineering domain</h2>
+            <p>Filter the portfolio without leaving the page. Every project includes source code, measurable proof, and an implementation case study.</p>
+          </div>
+          <div class="explorer-status" aria-live="polite">
+            <strong>{{activeProjectCount}}</strong>
+            <span>{{activeProjectLabel}}</span>
+          </div>
+          <div class="project-area-filters" role="group" aria-label="Filter projects by engineering domain">
+            <button *ngFor="let area of projectAreas" type="button" (click)="setProjectArea(area.id)"
+                    [class.is-active]="activeProjectArea === area.id" [attr.aria-pressed]="activeProjectArea === area.id">
+              <i class="fas {{area.icon}}" aria-hidden="true"></i>
+              <span>{{area.label}}</span>
+              <small>{{area.count}}</small>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="software-projects" class="container-fluid featured-engineering project-domain-section"
+               [class.project-section-hidden]="!showArea('software')" [attr.aria-hidden]="!showArea('software')"
+               aria-labelledby="featured-projects-title">
+        <div class="featured-projects-heading reveal-on-scroll">
           <div>
             <span class="section-kicker">Selected work · 2026</span>
             <h2 id="featured-projects-title">Featured Engineering Projects</h2>
@@ -60,7 +116,8 @@
         </div>
 
         <div class="engineering-project-grid">
-          <article *ngFor="let project of featuredProjects" class="engineering-project-card" [ngClass]="project.accent">
+          <article *ngFor="let project of featuredProjects; let projectIndex = index" class="engineering-project-card reveal-on-scroll"
+                   [style.--reveal-delay]="(projectIndex * 70) + 'ms'" [ngClass]="project.accent">
             <a class="engineering-project-media" [routerLink]="['/projects', project.name]" [attr.aria-label]="'Open ' + project.name + ' case study'">
               <img [src]="'../../../assets/projects/' + project.cover" [alt]="project.name + ' project cover'" loading="lazy">
               <span class="engineering-role">{{project.role}}</span>
@@ -91,8 +148,10 @@
         </div>
       </section>
 
-      <section class="container-fluid featured-engineering ai-data-section" aria-labelledby="ai-data-projects-title">
-        <div class="featured-projects-heading">
+      <section id="ai-projects" class="container-fluid featured-engineering ai-data-section project-domain-section"
+               [class.project-section-hidden]="!showArea('ai')" [attr.aria-hidden]="!showArea('ai')"
+               aria-labelledby="ai-data-projects-title">
+        <div class="featured-projects-heading reveal-on-scroll">
           <div>
             <span class="section-kicker ai-kicker">Intelligent systems · 2026</span>
             <h2 id="ai-data-projects-title">AI, ML &amp; Data Systems</h2>
@@ -102,7 +161,8 @@
         </div>
 
         <div class="engineering-project-grid ai-project-grid">
-          <article *ngFor="let project of aiDataProjects" class="engineering-project-card" [ngClass]="project.accent">
+          <article *ngFor="let project of aiDataProjects; let projectIndex = index" class="engineering-project-card reveal-on-scroll"
+                   [style.--reveal-delay]="(projectIndex * 70) + 'ms'" [ngClass]="project.accent">
             <a class="engineering-project-media" [routerLink]="['/projects', project.name]" [attr.aria-label]="'Open ' + project.name + ' case study'">
               <img [src]="'../../../assets/projects/' + project.cover" [alt]="project.name + ' project cover'" loading="lazy">
               <span class="engineering-role">{{project.role}}</span>
@@ -133,8 +193,10 @@
         </div>
       </section>
 
-      <section class="container-fluid featured-engineering cloud-platform-section" aria-labelledby="cloud-platform-projects-title">
-        <div class="featured-projects-heading">
+      <section id="cloud-projects" class="container-fluid featured-engineering cloud-platform-section project-domain-section"
+               [class.project-section-hidden]="!showArea('cloud')" [attr.aria-hidden]="!showArea('cloud')"
+               aria-labelledby="cloud-platform-projects-title">
+        <div class="featured-projects-heading reveal-on-scroll">
           <div>
             <span class="section-kicker cloud-kicker">Resilient infrastructure · 2026</span>
             <h2 id="cloud-platform-projects-title">Cloud, Platform &amp; Distributed Systems</h2>
@@ -144,7 +206,8 @@
         </div>
 
         <div class="engineering-project-grid cloud-project-grid">
-          <article *ngFor="let project of cloudPlatformProjects" class="engineering-project-card" [ngClass]="project.accent">
+          <article *ngFor="let project of cloudPlatformProjects; let projectIndex = index" class="engineering-project-card reveal-on-scroll"
+                   [style.--reveal-delay]="(projectIndex * 70) + 'ms'" [ngClass]="project.accent">
             <a class="engineering-project-media" [routerLink]="['/projects', project.name]" [attr.aria-label]="'Open ' + project.name + ' case study'">
               <img [src]="'../../../assets/projects/' + project.cover" [alt]="project.name + ' project cover'" loading="lazy">
               <span class="engineering-role">{{project.role}}</span>
@@ -175,8 +238,10 @@
         </div>
       </section>
 
-      <section class="container-fluid featured-engineering vision-research-section" aria-labelledby="vision-research-projects-title">
-        <div class="featured-projects-heading">
+      <section id="research-projects" class="container-fluid featured-engineering vision-research-section project-domain-section"
+               [class.project-section-hidden]="!showArea('research')" [attr.aria-hidden]="!showArea('research')"
+               aria-labelledby="vision-research-projects-title">
+        <div class="featured-projects-heading reveal-on-scroll">
           <div>
             <span class="section-kicker research-kicker">Experiments with evidence · 2026</span>
             <h2 id="vision-research-projects-title">Computer Vision &amp; Research Engineering</h2>
@@ -186,7 +251,8 @@
         </div>
 
         <div class="engineering-project-grid research-project-grid">
-          <article *ngFor="let project of visionResearchProjects" class="engineering-project-card" [ngClass]="project.accent">
+          <article *ngFor="let project of visionResearchProjects; let projectIndex = index" class="engineering-project-card reveal-on-scroll"
+                   [style.--reveal-delay]="(projectIndex * 70) + 'ms'" [ngClass]="project.accent">
             <a class="engineering-project-media" [routerLink]="['/projects', project.name]" [attr.aria-label]="'Open ' + project.name + ' case study'">
               <img [src]="'../../../assets/projects/' + project.cover" [alt]="project.name + ' project cover'" loading="lazy">
               <span class="engineering-role">{{project.role}}</span>
@@ -217,7 +283,7 @@
         </div>
       </section>
 
-      <div class="container-fluid">
+      <div class="container-fluid about-values-section reveal-on-scroll">
 
         <!-- row -->
         <div class="row">
@@ -230,7 +296,8 @@
               <!-- title frame -->
               <div class="art-title-frame">
                 <!-- title -->
-                <h4> About Me</h4>
+                <span class="section-kicker">Beyond the code</span>
+                <h2>How I approach the work</h2>
               </div>
               <!-- title frame end -->
             </div>
@@ -240,7 +307,7 @@
           <!-- col end -->
 
           <!-- col -->
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 reveal-on-scroll">
 
             <!-- service -->
             <div class="art-a art-service-icon-box">
@@ -260,7 +327,7 @@
           <!-- col end -->
 
           <!-- col -->
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 reveal-on-scroll">
 
             <!-- service -->
             <div class="art-a art-service-icon-box">
@@ -280,7 +347,7 @@
           <!-- col end -->
 
           <!-- col -->
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6 reveal-on-scroll">
 
             <!-- service -->
             <div class="art-a art-service-icon-box">
